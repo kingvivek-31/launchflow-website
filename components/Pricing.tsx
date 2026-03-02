@@ -51,8 +51,8 @@ export default function Pricing() {
                             <p className="text-[#3D4935] text-[15px] mb-8">Perfect for gyms, cafes, & local businesses.</p>
 
                             <div className="flex items-baseline gap-2 mb-10">
-                                <span className="text-[44px] tracking-tight font-medium text-[#121212]">₹8,000</span>
-                                <span className="text-[#4A5568] line-through text-sm">₹10,000</span>
+                                <span className="text-[44px] tracking-tight font-medium text-[#121212]">₹10,000</span>
+                                <span className="text-[#4A5568] line-through text-sm">₹15,000</span>
                             </div>
 
                             <ul className="space-y-4 mb-10 pb-8 flex-1 border-b border-black/5">
