@@ -72,7 +72,7 @@ function AnimatedHeadline() {
             {italicWords.map((word, i) => (
                 <span
                     key={`italic-${i}`}
-                    className="inline-block overflow-hidden mr-[0.22em] pr-2 pb-2 -mr-2 -mb-2"
+                    className="inline-block overflow-hidden mr-[0.22em] pr-2 pb-2 -mr-2 -mb-2 relative"
                     aria-hidden="true"
                 >
                     <motion.span
@@ -87,6 +87,20 @@ function AnimatedHeadline() {
                     >
                         {word}
                     </motion.span>
+                    {/* Red strikethrough line for "bad website" phrase */}
+                    {(allWords + i >= 5) && (
+                        <motion.span
+                            className="absolute left-0 top-1/2 -translate-y-1/2 h-[2.5px] bg-[#ef4444] rounded-full origin-left"
+                            initial={{ scaleX: 0, opacity: 0 }}
+                            animate={{ scaleX: 1, opacity: 1 }}
+                            transition={{
+                                duration: 0.55,
+                                ease: [0.34, 1.56, 0.64, 1],
+                                delay: (allWords + i) * 0.07 + 0.48,
+                            }}
+                            style={{ width: "100%" }}
+                        />
+                    )}
                 </span>
             ))}
             {/* Visually hidden full text for screen readers */}
