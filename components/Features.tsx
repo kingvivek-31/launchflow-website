@@ -9,8 +9,10 @@ const features = [
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 3l-8.5 9.5h7l-1.5 8.5L20 11h-7l1-8z" />
             </svg>
         ),
-        title: "0.5s Load Times",
-        description: "Built on modern static code. No slow themes.",
+        title: "Managed Peace of Mind",
+        description: "1 year of hosting, domain, and updates included. We handle the tech so you can focus on clients.",
+        bg: "#fadc64",
+        text: "#3D3000",
     },
     {
         icon: (
@@ -18,8 +20,10 @@ const features = [
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
         ),
-        title: "Zero Risk",
-        description: "We build the layout first. Don't like it? We walk away.",
+        title: "High-Conversion DNA",
+        description: "Strategically designed to turn high-intent traffic into WhatsApp & call enquiries.",
+        bg: "#d4cdf8",
+        text: "#2D1F6E",
     },
     {
         icon: (
@@ -27,8 +31,10 @@ const features = [
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.5 14.5a2.5 2.5 0 002.5-2.5c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 002.5 2.5z" />
             </svg>
         ),
-        title: "Live in 48 Hours",
-        description: "Once approved, your site is up and running in 2 days.",
+        title: "Launch in Days",
+        description: "Your digital storefront live in 2-6 days depending on your chosen plan. No long waits.",
+        bg: "#c1fb9e",
+        text: "#1A3D0A",
     },
 ];
 
@@ -63,11 +69,11 @@ export default function Features() {
                 >
                     <motion.div variants={titleVariants} className="max-w-2xl mb-20">
                         <h2 className="text-[32px] sm:text-[44px] font-medium tracking-tight leading-[1.1] text-[#121212] mb-6">
-                            No Freelancer Chaos. <br />
-                            <span className="text-[#4A5568]">Just Results.</span>
+                            No Freelancers. <br />
+                            <span className="text-[#4A5568]">No Surprises. Just Results.</span>
                         </h2>
                         <p className="text-[16px] leading-[1.6] text-[#4A5568]">
-                            We streamline the entire process of launching your digital storefront. High quality, technical precision, and absolute transparency.
+                            LaunchFlow manages everything end-to-end. You get a fast, professional website that brings in leads — without touching a single technical thing.
                         </p>
                     </motion.div>
 
@@ -78,15 +84,15 @@ export default function Features() {
                                 variants={cardVariants}
                                 whileHover={{ y: -8 }}
                                 transition={{ y: { type: "spring" as any, stiffness: 300, damping: 20 } }}
-                                className="bg-[#fadc64] text-[#121212] rounded-[32px] p-8 pb-16 flex flex-col group cursor-default"
-                                style={{ backgroundColor: feature.title.includes('Risk') ? '#d4cdf8' : feature.title.includes('48') ? '#f2fcf1' : '#fadc64' }}
+                                className="rounded-[32px] p-8 pb-16 flex flex-col group cursor-default"
+                                style={{ backgroundColor: feature.bg, color: feature.text }}
                             >
-                                <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center mb-auto text-black/80 bg-white transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
+                                <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center mb-auto bg-white/70 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
                                     {feature.icon}
                                 </div>
                                 <div className="mt-16">
                                     <h3 className="text-xl font-semibold mb-3 tracking-tight">{feature.title}</h3>
-                                    <p className="text-[#3D4935] text-sm leading-relaxed">{feature.description}</p>
+                                    <p className="text-sm leading-relaxed opacity-75">{feature.description}</p>
                                 </div>
                             </motion.div>
                         ))}

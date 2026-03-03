@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const TICKER_ITEMS = [
-    "GYMS", "CAFES", "SALONS", "RESTAURANTS", "CLINICS", "COACHING", "RETAIL", "STUDIOS"
+    "GYMS", "WELLNESS CENTERS", "COACHING", "BOXING GYMS", "YOGA STUDIOS", "FITNESS BRANDS"
 ];
 const TICKER_FULL = [...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS];
 
@@ -71,16 +71,23 @@ export default function Hero() {
                             variants={itemVariants}
                             className="inline-block bg-[#121212] text-white text-xs font-medium px-4 py-1.5 rounded-full mb-8 relative z-20"
                         >
-                            Verify anything, store nothing.
+                            Managed websites for gyms, wellness & coaching.
                         </motion.div>
 
                         <motion.h1
                             variants={itemVariants}
                             className="text-5xl sm:text-6xl md:text-[76px] font-[500] leading-[1.05] tracking-tight text-[#121212] mb-6 relative z-20"
                         >
-                            Introducing the <br className="hidden md:block" />
-                            internet&apos;s <span className="text-[#3D4935]/80 italic">trust layer</span>
+                            Don&apos;t lose clients <br className="hidden md:block" />
+                            to a <span className="text-[#3D4935]/80 italic">bad website.</span>
                         </motion.h1>
+
+                        <motion.p
+                            variants={itemVariants}
+                            className="text-lg md:text-xl text-[#4A5568] max-w-xl mb-10 relative z-20 leading-relaxed"
+                        >
+                            We build and manage fast, lead-generating websites for gyms, wellness centers, and coaching businesses. First year of management included in every plan.
+                        </motion.p>
 
                         <motion.div
                             variants={itemVariants}
@@ -93,7 +100,7 @@ export default function Hero() {
                                 href="#pricing"
                                 className="inline-flex items-center justify-center bg-[#121212] text-white text-base font-medium px-8 py-4 rounded-xl hover:bg-black transition-colors"
                             >
-                                Get in touch
+                                See Plans & Pricing
                             </motion.a>
                             <motion.a
                                 whileHover={{ scale: 0.98 }}
@@ -102,7 +109,7 @@ export default function Hero() {
                                 href="#how-it-works"
                                 className="inline-flex items-center justify-center bg-[#c1fb9e] text-[#121212] text-base font-medium px-8 py-4 rounded-xl hover:bg-[#b5f58c] transition-colors"
                             >
-                                Learn more
+                                How It Works
                             </motion.a>
                         </motion.div>
                     </motion.div>
@@ -125,13 +132,13 @@ export default function Hero() {
                                 >
                                     <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 2L2 7l10 5 10-5-10-5z" /></svg>
                                 </div>
-                                <span className="text-xs font-semibold tracking-wide uppercase">Identity Active</span>
+                                <span className="text-xs font-semibold tracking-wide uppercase">Always Managed</span>
                             </div>
                             <h2 className="text-3xl font-semibold tracking-tight leading-tight mb-2">
-                                Stop losing customers to <span className="strike">ugly websites.</span>
+                                More leads. Zero tech headaches.
                             </h2>
                             <p className="text-[#3D4935] text-sm mt-4">
-                                We build fast, modern storefronts in 48 hours. Zero risk.
+                                We handle the website. You focus on running your business.
                             </p>
                         </motion.div>
                     </motion.div>

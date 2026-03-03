@@ -13,9 +13,10 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { label: "Home", href: "#hero" },
-        { label: "The Process", href: "#how-it-works" },
-        { label: "Pricing", href: "#pricing" },
+        { label: "Home", href: "/" },
+        { label: "The Process", href: "/#how-it-works" },
+        { label: "Our Work", href: "/our-work" },
+        { label: "Pricing", href: "/#pricing" },
     ];
 
     return (
@@ -111,11 +112,11 @@ function MobileMenu({ navLinks }: { navLinks: { label: string; href: string }[] 
                         ))}
                         <div className="mt-2 space-y-2">
                             <a
-                                href="#pricing"
+                                href="/our-work"
                                 onClick={() => setOpen(false)}
                                 className="block text-center bg-[#c1fb9e] text-[#121212] text-sm font-medium px-4 py-3 rounded-xl"
                             >
-                                Learn more
+                                Our Work
                             </a>
                         </div>
                     </motion.div>

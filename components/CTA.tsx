@@ -24,8 +24,8 @@ export default function CTA() {
                 </motion.div>
 
                 <h2 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight leading-[1.05] mb-8">
-                    Your customers are searching online. <br className="hidden md:block" />
-                    <span className="text-white/60">Will they find you?</span>
+                    Your future clients are searching right now. <br className="hidden md:block" />
+                    <span className="text-white/60">Is your website ready for them?</span>
                 </h2>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -36,16 +36,16 @@ export default function CTA() {
                         href="https://wa.me/919582915196"
                         className="bg-[#c1fb9e] text-[#121212] px-8 py-4 rounded-xl font-medium hover:bg-[#b5f58c] transition-colors inline-block"
                     >
-                        WhatsApp Us
+                        WhatsApp Us Now
                     </motion.a>
                     <motion.a
                         whileHover={{ scale: 0.98 }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ type: "spring" as any, stiffness: 400, damping: 15 }}
-                        href="mailto:hello@launchflow.dev"
+                        href="mailto:hello@launchflow.co.in"
                         className="bg-white/10 text-white px-8 py-4 rounded-xl font-medium hover:bg-white/20 transition-colors inline-block"
                     >
-                        Email Us
+                        Send an Email
                     </motion.a>
                 </div>
             </motion.div>
