@@ -33,24 +33,13 @@ body {
     overflow-x: hidden;
 }
 
-/* Marquee animation */
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
+/* ─── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f2fcf1; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
 
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-.animate-marquee {
-    animation: marquee 25s linear infinite;
-    display: flex;
-    width: max-content;
-}
-
-/* Strikethrough */
+/* ─── Strikethrough util ─────────────────────────────────── */
 .strike {
     position: relative;
     text-decoration-line: line-through;
@@ -58,20 +47,129 @@ body {
     text-decoration-thickness: 3px;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 6px;
-}
+/* ═══════════════════════════════════════════════════════════
+   ANIMATION SYSTEM
+   All wrapped in prefers-reduced-motion: no-preference
+   ═══════════════════════════════════════════════════════════ */
 
-::-webkit-scrollbar-track {
-    background: #f2fcf1;
-}
+@media (prefers-reduced-motion: no-preference) {
 
-::-webkit-scrollbar-thumb {
-    background: #d1d5db;
-    border-radius: 4px;
-}
+    /* ── Animation 2: Dual-row opposing marquee ─────────── */
+    @keyframes lf-ticker-left {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-33.333%); }
+    }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #9ca3af;
+    @keyframes lf-ticker-right {
+        from { transform: translateX(-33.333%); }
+        to   { transform: translateX(0); }
+    }
+
+    .lf-ticker-row-1 {
+        animation: lf-ticker-left 40s linear infinite;
+        opacity: 0.55;
+    }
+
+    .lf-ticker-row-2 {
+        animation: lf-ticker-right 40s linear infinite;
+        opacity: 0.55;
+    }
+
+    /* Pause on hover */
+    .lf-ticker:hover .lf-ticker-row-1,
+    .lf-ticker:hover .lf-ticker-row-2 {
+        animation-play-state: paused;
+    }
+
+    /* Mobile: single row speed bump */
+    @media (max-width: 767px) {
+        .lf-ticker-row-1 {
+            animation-duration: 55s;
+        }
+        .lf-ticker-row-2 {
+            display: none; /* single row only on mobile */
+        }
+    }
+
+    /* ── Animation 4: Feature card left-border hover ────── */
+    .lf-feature-card .lf-card-border {
+        height: 0;
+        transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lf-feature-card:hover .lf-card-border {
+        height: 100%;
+    }
+
+    /* Subtle bg lightening on hover (filter brightness) */
+    .lf-feature-card {
+        transition: filter 0.3s ease;
+    }
+
+    .lf-feature-card:hover {
+        filter: brightness(1.04);
+    }
+
+    /* ── Animation 5: Step title underline hover ────────── */
+    .lf-step-card .lf-step-underline {
+        transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        width: 0;
+        display: block;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        background: #c1fb9e;
+    }
+
+    .lf-step-card:hover .lf-step-underline {
+        width: 100%;
+    }
+
+    /* ── Animation 6: Pricing shimmer ───────────────────── */
+    @keyframes lf-shimmer-sweep {
+        0%   { transform: translateX(-100%); }
+        100% { transform: translateX(200%); }
+    }
+
+    .lf-shimmer-card {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .lf-shimmer-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            105deg,
+            transparent 40%,
+            rgba(255, 255, 255, 0.06) 50%,
+            transparent 60%
+        );
+        transform: translateX(-100%);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .lf-shimmer-card.lf-shimmer-active::before {
+        animation: lf-shimmer-sweep 0.8s ease-in-out forwards;
+    }
+
+} /* end prefers-reduced-motion */
+
+/* ─── Reduced motion fallback ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    /* Keep ticker but instant, no animation */
+    .lf-ticker-row-1,
+    .lf-ticker-row-2 {
+        animation: none;
+    }
+
+    /* Kill all CSS transitions */
+    .lf-feature-card,
+    .lf-feature-card .lf-card-border,
+    .lf-step-card .lf-step-underline {
+        transition: none;
+    }
 }

@@ -26,51 +26,72 @@ const steps = [
     },
 ];
 
-const CARD_DURATION = 0.4;
 const CARD_EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
-const STAGGER = 0.18;
 
+// Animation 5: Process step with border-draw + slide-in content
 function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
     const ref = useRef<HTMLDivElement>(null);
     const inView = useInView(ref, { once: true, margin: "-80px" });
 
     return (
-        <motion.div
+        <div
             ref={ref}
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{
-                duration: CARD_DURATION,
-                ease: CARD_EASE,
-                delay: index * STAGGER,
-            }}
-            className="bg-white rounded-[28px] p-8 sm:p-10 flex flex-col shadow-[0_8px_32px_rgba(0,0,0,0.06)] border border-black/5 relative overflow-hidden group cursor-default"
+            className="lf-step-card bg-white rounded-[28px] p-8 sm:p-10 flex flex-col shadow-[0_8px_32px_rgba(0,0,0,0.06)] border border-black/5 relative overflow-hidden group cursor-default"
         >
+            {/* Top border draw animation */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden rounded-t-[28px]">
+                <motion.div
+                    className="h-full bg-[#c1fb9e] origin-left"
+                    initial={{ scaleX: 0 }}
+                    animate={inView ? { scaleX: 1 } : {}}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.12 }}
+                />
+            </div>
+
             {/* Hover glow */}
             <div className="absolute -top-6 -left-6 w-28 h-28 bg-[#c1fb9e]/40 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            {/* Step number — subtle scale pulse on entrance */}
+            {/* Step number — fades in simultaneously with border draw */}
             <motion.div
-                initial={{ scale: 1 }}
-                animate={inView ? { scale: [1, 1.06, 1] } : {}}
+                initial={{ opacity: 0, scale: 1 }}
+                animate={inView ? { opacity: 1, scale: [1, 1.06, 1] } : {}}
                 transition={{
-                    duration: 0.5,
-                    ease: "easeOut",
-                    delay: index * STAGGER + CARD_DURATION * 0.6,
+                    opacity: { duration: 0.4, ease: "easeOut", delay: index * 0.12 },
+                    scale: { duration: 0.5, ease: "easeOut", delay: index * 0.12 + 0.25 },
                 }}
-                className="text-[56px] sm:text-[64px] font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#8bdc6d] to-[#c1fb9e] tracking-tighter mb-10 leading-none select-none origin-left"
+                className="text-[56px] sm:text-[64px] font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#8bdc6d] to-[#c1fb9e] tracking-tighter mb-10 leading-none select-none origin-left transition-colors duration-250 group-hover:[filter:drop-shadow(0_0_12px_rgba(139,220,109,0.35))]"
                 style={{
                     filter: inView ? "drop-shadow(0 0 12px rgba(139,220,109,0.35))" : "none",
                 }}
             >
+                {/* Step number turns green on hover handled via CSS class */}
                 {step.number}
             </motion.div>
 
             <div className="mt-auto">
-                <h3 className="text-xl sm:text-2xl font-bold text-[#121212] mb-3 tracking-tight">{step.title}</h3>
-                <p className="text-[#4A5568] text-[15px] sm:text-[16px] leading-[1.65] font-medium">{step.desc}</p>
+                {/* Title slides in */}
+                <motion.h3
+                    className="lf-step-title text-xl sm:text-2xl font-bold text-[#121212] mb-3 tracking-tight relative"
+                    initial={{ opacity: 0, x: -14 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.55, ease: CARD_EASE, delay: index * 0.12 + 0.08 }}
+                >
+                    {step.title}
+                    {/* Green underline slides in from left on hover */}
+                    <span className="lf-step-underline absolute bottom-0 left-0 h-[2px] bg-[#c1fb9e] w-0 group-hover:w-full transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+                </motion.h3>
+
+                {/* Description slides in */}
+                <motion.p
+                    className="text-[#4A5568] text-[15px] sm:text-[16px] leading-[1.65] font-medium"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.55, ease: CARD_EASE, delay: index * 0.12 + 0.15 }}
+                >
+                    {step.desc}
+                </motion.p>
             </div>
-        </motion.div>
+        </div>
     );
 }
 
@@ -103,27 +124,28 @@ export default function HowItWorks() {
     return (
         <section id="how-it-works" className="relative bg-[#f2fcf1] py-24 sm:py-32 overflow-hidden">
 
-            {/* Static decorative background ring — no looping */}
+            {/* Static decorative background rings */}
             <div className="absolute top-[4%] left-[3%] w-[420px] h-[420px] border-[3px] border-[#a8e68e]/25 rounded-full border-dashed pointer-events-none hidden lg:block opacity-60" />
             <div className="absolute bottom-[6%] right-[4%] w-48 h-48 bg-gradient-to-tr from-[#d4cdf8]/30 to-transparent rounded-[2.5rem] pointer-events-none hidden lg:block" />
 
             <div className="max-w-7xl mx-auto px-6 sm:px-8">
 
-                {/* Section header */}
-                <motion.div
-                    ref={headingRef}
-                    initial={{ opacity: 0, y: 28 }}
-                    animate={headingInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.55, ease: CARD_EASE }}
-                    className="max-w-2xl mb-14 sm:mb-16"
-                >
-                    <h2 className="text-[32px] sm:text-[44px] font-medium tracking-tight leading-[1.1] text-[#121212]">
-                        From First Call to <br />
-                        <span className="text-[#3D4935]/80">Live & Generating Leads.</span>
-                    </h2>
-                </motion.div>
+                {/* Animation 3: Section heading clip-mask reveal */}
+                <div className="max-w-2xl mb-14 sm:mb-16" ref={headingRef}>
+                    <div className="overflow-hidden">
+                        <motion.h2
+                            className="text-[32px] sm:text-[44px] font-medium tracking-tight leading-[1.1] text-[#121212]"
+                            initial={{ y: "100%" }}
+                            animate={headingInView ? { y: "0%" } : {}}
+                            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            From First Call to <br />
+                            <span className="text-[#3D4935]/80">Live &amp; Generating Leads.</span>
+                        </motion.h2>
+                    </div>
+                </div>
 
-                {/* Desktop: 4-column grid with connector thread between rows */}
+                {/* Desktop: 4-column grid */}
                 <div className="hidden lg:block">
                     <div className="grid grid-cols-4 gap-5">
                         {steps.map((step, i) => (
