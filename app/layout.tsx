@@ -2,9 +2,29 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "LaunchFlow — Modern Digital Storefronts",
+    title: "LaunchFlow | Elite Digital Infrastructure for Fitness Brands",
     description:
-        "LaunchFlow builds lightning-fast, modern digital storefronts for local businesses in 1–2 days.",
+        "Delhi's premier web development agency for gyms, Pilates studios, and wellness centers. We build high-converting digital ecosystems that turn local traffic into paying members.",
+    keywords: [
+        "gym website developer Delhi",
+        "fitness digital agency",
+        "Next.js developer for gyms",
+        "Pilates studio website",
+        "coaching center web development",
+    ],
+    openGraph: {
+        title: "LaunchFlow | High-Converting Websites for Fitness Brands",
+        description: "Stop losing leads to a bad website. We build elite digital infrastructure for Delhi's top wellness centers.",
+        url: "https://launchflow.co.in",
+        siteName: "LaunchFlow",
+        locale: "en_IN",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "LaunchFlow | Digital Infrastructure",
+        description: "We engineer high-converting platforms for gyms and wellness centers.",
+    },
 };
 
 export default function RootLayout({
