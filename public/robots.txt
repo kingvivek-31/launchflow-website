@@ -1,0 +1,14 @@
+# LaunchFlow Robots.txt
+# Allows all bots to crawl the site
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /_next
+Disallow: /.next
+
+# Specify sitemap location
+Sitemap: https://launchflow.co.in/sitemap.xml
+
+# Crawl delay (optional - set crawl rate)
+Crawl-delay: 1
