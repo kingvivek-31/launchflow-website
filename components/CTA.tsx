@@ -91,7 +91,7 @@ export default function CTA() {
                         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 1.1 }}
                         whileHover={{ scale: 1.04, y: -2 }}
                         whileTap={{ scale: 0.96 }}
-                        href="https://wa.me/919582915196"
+                        href="https://wa.me/918595669560"
                         className="bg-[#c1fb9e] text-[#121212] px-8 py-4 rounded-xl font-medium hover:bg-[#b5f58c] transition-colors inline-block"
                     >
                         WhatsApp Us Now

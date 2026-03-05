@@ -103,7 +103,7 @@ export default function OurWork() {
                 >
                     <p className="text-[#4A5568] mb-6 text-[16px]">Want your gym or coaching brand on this page?</p>
                     <a
-                        href="https://wa.me/919582915196"
+                        href="https://wa.me/918595669560"
                         className="inline-flex items-center justify-center bg-[#121212] text-white text-base font-medium px-8 py-4 rounded-xl hover:bg-black transition-colors"
                     >
                         Let&apos;s Build Yours
