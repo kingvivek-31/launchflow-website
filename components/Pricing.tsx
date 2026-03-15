@@ -62,8 +62,8 @@ export default function Pricing() {
         <section id="pricing" className="py-24 sm:py-32 bg-white">
             <div className="max-w-7xl mx-auto px-6 sm:px-8" ref={sectionRef}>
 
-                {/* Animation 3: Section heading clip-mask reveal */}
-                <div className="max-w-2xl mx-auto text-center mb-16" ref={headingRef}>
+                {/* Section heading with problems and solutions */}
+                <div className="max-w-4xl mx-auto text-center mb-20" ref={headingRef}>
                     <div className="overflow-hidden">
                         <motion.h2
                             className="text-[32px] sm:text-[44px] font-medium tracking-tight leading-[1] text-[#121212] mb-4"
@@ -71,16 +71,150 @@ export default function Pricing() {
                             animate={headingInView ? { y: "0%" } : {}}
                             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            Transparent Pricing.
+                            Why Most Local Business Websites Fail
                         </motion.h2>
                     </div>
                     <motion.p
-                        className="text-[17px] text-[#4A5568]"
+                        className="text-[17px] text-[#4A5568] mb-12"
                         initial={{ opacity: 0 }}
                         animate={headingInView ? { opacity: 1 } : {}}
                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.85 + 0.15 }}
                     >
-                        One-time build fee. First year of full management included in every plan.
+                        Most gyms and wellness centers have websites that actually hurt their business. Here are the biggest problems:
+                    </motion.p>
+
+                    {/* Problem cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={headingInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, delay: 0.2 }}
+                            className="bg-red-50 border border-red-100 rounded-[20px] p-6 text-left"
+                        >
+                            <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-6 h-6 text-red-600">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-gray-800 mb-2">Slow & Broken</h3>
+                            <p className="text-sm text-gray-600">Takes 10+ seconds to load. Crashes on mobile. Customers leave before they can even see your services.</p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={headingInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, delay: 0.3 }}
+                            className="bg-orange-50 border border-orange-100 rounded-[20px] p-6 text-left"
+                        >
+                            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mb-4">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-6 h-6 text-orange-600">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-gray-800 mb-2">No Lead Capture</h3>
+                            <p className="text-sm text-gray-600">Visitors can't easily contact you. No clear calls-to-action. No phone or WhatsApp buttons. Leads slip away.</p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={headingInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, delay: 0.4 }}
+                            className="bg-yellow-50 border border-yellow-100 rounded-[20px] p-6 text-left"
+                        >
+                            <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-6 h-6 text-yellow-600">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-gray-800 mb-2">Invisible on Google</h3>
+                            <p className="text-sm text-gray-600">Poor SEO. Incomplete Google Business Profile. When customers search "gym near me", they find your competitors.</p>
+                        </motion.div>
+                    </div>
+
+                    {/* How LaunchFlow fixes it */}
+                    <div className="overflow-hidden">
+                        <motion.h3
+                            className="text-[28px] sm:text-[36px] font-medium tracking-tight leading-[1.1] text-[#121212] mb-6"
+                            initial={{ y: "100%" }}
+                            animate={headingInView ? { y: "0%" } : {}}
+                            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
+                        >
+                            How LaunchFlow Fixes It
+                        </motion.h3>
+                    </div>
+                    <motion.p
+                        className="text-[17px] text-[#4A5568] mb-12"
+                        initial={{ opacity: 0 }}
+                        animate={headingInView ? { opacity: 1 } : {}}
+                        transition={{ duration: 0.6, ease: "easeOut", delay: 1.0 }}
+                    >
+                        We build fast, conversion-focused websites with Google optimization that actually bring you customers:
+                    </motion.p>
+
+                    {/* Solution cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={headingInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, delay: 0.7 }}
+                            className="bg-green-50 border border-green-100 rounded-[20px] p-6 text-left"
+                        >
+                            <div className="w-12 h-12 bg-[#c1fb9e] rounded-full flex items-center justify-center mb-4">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-6 h-6 text-green-700">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-gray-800 mb-2">Lightning Fast</h3>
+                            <p className="text-sm text-gray-600">Loads in under 2 seconds. Perfect on mobile. Customers can browse your services without frustration.</p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={headingInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, delay: 0.8 }}
+                            className="bg-blue-50 border border-blue-100 rounded-[20px] p-6 text-left"
+                        >
+                            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-6 h-6 text-blue-600">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-gray-800 mb-2">WhatsApp Leads</h3>
+                            <p className="text-sm text-gray-600">Clear contact buttons. Easy WhatsApp integration. Visitors can reach you instantly when they're ready to join.</p>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={headingInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.7, delay: 0.9 }}
+                            className="bg-purple-50 border border-purple-100 rounded-[20px] p-6 text-left"
+                        >
+                            <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-6 h-6 text-purple-600">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.2-5.2m0 0A7.5 7.5 0 1 0 10.8 10.8a7.5 7.5 0 0 0 5 5z" />
+                                </svg>
+                            </div>
+                            <h3 className="text-lg font-semibold text-gray-800 mb-2">Found on Google</h3>
+                            <p className="text-sm text-gray-600">Optimized Google Business Profile. SEO-ready website. When customers search "gym near me", they find YOU first.</p>
+                        </motion.div>
+                    </div>
+
+                    <motion.h3
+                        id="simple-pricing"
+                        className="text-[28px] sm:text-[36px] font-medium tracking-tight leading-[1.1] text-[#121212] mb-6"
+                        initial={{ opacity: 0 }}
+                        animate={headingInView ? { opacity: 1 } : {}}
+                        transition={{ duration: 0.6, ease: "easeOut", delay: 1.1 }}
+                    >
+                        Simple Pricing
+                    </motion.h3>
+                    <motion.p
+                        className="text-[17px] text-[#4A5568]"
+                        initial={{ opacity: 0 }}
+                        animate={headingInView ? { opacity: 1 } : {}}
+                        transition={{ duration: 0.6, ease: "easeOut", delay: 1.2 }}
+                    >
+                        One-time setup. Ongoing management keeps everything running smoothly.
                     </motion.p>
                 </div>
 
@@ -92,28 +226,28 @@ export default function Pricing() {
                         initial={{ opacity: 0, x: -24 }}
                         animate={leftCardInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                        whileHover={{ y: -8 }}
+                        whileHover={{ y: -8, scale: 1.01 }}
                         style={{ ["--hover-transition" as any]: "y 0.35s cubic-bezier(0.16, 1, 0.3, 1)" }}
                         className="bg-white border border-black/5 rounded-[32px] p-8 flex flex-col shadow-sm cursor-default"
                     >
                         <div className="mb-6">
-                            <h3 className="text-xl font-bold text-[#121212]">Starter Lead Page</h3>
+                            <h3 className="text-2xl font-bold text-[#121212]">Quick Start</h3>
                         </div>
-                        <p className="text-[#4A5568] text-[14px] mb-6">One powerful landing page built to generate calls and enquiries.</p>
+                        <p className="text-[#4A5568] text-[16px] mb-6">Get found on Google Maps and start getting leads fast.</p>
 
                         <div className="flex items-baseline gap-2 mb-8">
-                            <span className="text-[36px] tracking-tight font-medium text-[#121212]">₹12,000</span>
+                            <span className="text-[42px] tracking-tight font-medium text-[#121212]">₹12,000</span>
+                            <span className="text-[#4A5568] text-sm">setup</span>
                         </div>
 
                         <ul className="space-y-4 mb-8 flex-1 border-b border-black/5 pb-8">
                             {[
-                                "One high-conversion landing page",
-                                "Mobile-first design",
-                                "Call & WhatsApp enquiry buttons",
-                                "Delivered in 2–3 days",
-                                "1 year management included",
+                                "Google Business Profile optimization",
+                                "Fast, mobile-friendly website",
+                                "WhatsApp and phone lead capture",
+                                "Ready in 3-5 days",
                             ].map((feat, i) => (
-                                <li key={i} className="flex gap-3 items-center text-[#4A5568] text-[14px]">
+                                <li key={i} className="flex gap-3 items-center text-[#4A5568] text-[15px]">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-5 h-5 shrink-0 text-[#3D4935]"><path strokeLinecap="round" strokeLinejoin="round" d="m5 13 4 4L19 7" /></svg>
                                     {feat}
                                 </li>
@@ -125,9 +259,9 @@ export default function Pricing() {
                             whileTap={{ scale: 0.95 }}
                             transition={{ type: "spring" as any, stiffness: 400, damping: 15 }}
                             href="https://wa.me/919582915196"
-                            className="w-full bg-[#121212] flex items-center justify-center text-white py-3 rounded-xl font-[500] transition-colors"
+                            className="w-full bg-[#121212] text-white py-4 rounded-xl font-[500] hover:bg-[#2d2d2d] transition-colors text-center"
                         >
-                            Get Started
+                            Book Free Audit
                         </motion.a>
                     </motion.div>
 
@@ -137,29 +271,30 @@ export default function Pricing() {
                         initial={{ opacity: 0, y: 24 }}
                         animate={midCardInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-                        whileHover={{ y: -8 }}
+                        whileHover={{ y: -8, scale: 1.01 }}
                         className="cursor-default"
                     >
                         <ShimmerCard className="bg-[#f2fcf1] border border-[#a8e68e]/30 rounded-[32px] p-8 flex flex-col h-full relative overflow-hidden">
                             <div className="flex justify-between items-start mb-6">
-                                <h3 className="text-xl font-bold text-[#121212]">Growth Website</h3>
-                                <span className="bg-[#121212] text-[#f2fcf1] text-[10px] font-[600] uppercase tracking-wide px-3 py-1 rounded-full">recommended</span>
+                                <h3 className="text-2xl font-bold text-[#121212]">Growth Package</h3>
+                                <span className="bg-[#121212] text-[#f2fcf1] text-[10px] font-[600] uppercase tracking-wide px-3 py-1 rounded-full">most popular</span>
                             </div>
-                            <p className="text-[#3D4935] text-[14px] mb-6">A full business website that builds trust and converts visitors into enquiries.</p>
+                            <p className="text-[#3D4935] text-[16px] mb-6">Complete system to win Google searches and convert visitors into customers.</p>
 
                             <div className="flex items-baseline gap-2 mb-8">
-                                <span className="text-[36px] tracking-tight font-medium text-[#121212]">₹25,000</span>
+                                <span className="text-[42px] tracking-tight font-medium text-[#121212]">₹25,000</span>
+                                <span className="text-[#3D4935] text-sm">setup</span>
                             </div>
 
                             <ul className="space-y-4 mb-8 flex-1 border-b border-black/5 pb-8">
                                 {[
-                                    "3–5 page business website",
-                                    "Services, gallery & testimonials",
-                                    "Conversion-focused layout",
-                                    "Delivered in 4–6 days",
-                                    "1 year management included",
+                                    "Everything in Quick Start",
+                                    "Full business website with gallery",
+                                    "Customer testimonials section",
+                                    "SEO optimization for local searches",
+                                    "Ready in 5-7 days",
                                 ].map((feat, i) => (
-                                    <li key={i} className="flex gap-3 items-center text-[#121212] font-medium text-[14px]">
+                                    <li key={i} className="flex gap-3 items-center text-[#121212] font-medium text-[15px]">
                                         <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 shrink-0 text-[#3D4935]"><path d="M12 2L2 7l10 5 10-5-10-5z" /></svg>
                                         {feat}
                                     </li>
@@ -171,9 +306,9 @@ export default function Pricing() {
                                 whileTap={{ scale: 0.95 }}
                                 transition={{ type: "spring" as any, stiffness: 400, damping: 15 }}
                                 href="https://wa.me/919582915196"
-                                className="w-full bg-[#121212] flex items-center justify-center text-white py-3 rounded-xl font-[500] transition-colors"
+                                className="w-full bg-[#121212] text-white py-4 rounded-xl font-[500] hover:bg-[#2d2d2d] transition-colors text-center"
                             >
-                                WhatsApp Enquiry
+                                Book Free Audit
                             </motion.a>
                         </ShimmerCard>
                     </motion.div>
@@ -184,24 +319,25 @@ export default function Pricing() {
                         initial={{ opacity: 0, x: 24 }}
                         animate={rightCardInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                        whileHover={{ y: -8 }}
+                        whileHover={{ y: -8, scale: 1.01 }}
                         className="bg-white border border-black/5 rounded-[32px] p-8 flex flex-col shadow-sm cursor-default"
                     >
-                        <h3 className="text-xl font-bold text-[#121212] mb-6">Authority Setup</h3>
-                        <p className="text-[#4A5568] text-[14px] mb-6">For established gyms and coaching brands that want the best.</p>
+                        <h3 className="text-2xl font-bold text-[#121212] mb-6">Premium Setup</h3>
+                        <p className="text-[#4A5568] text-[16px] mb-6">For established businesses that want to dominate local search results.</p>
 
                         <div className="flex items-baseline gap-2 mb-8">
-                            <span className="text-[36px] tracking-tight font-medium text-[#121212]">₹45,000+</span>
+                            <span className="text-[42px] tracking-tight font-medium text-[#121212]">₹45,000+</span>
+                            <span className="text-[#4A5568] text-sm">setup</span>
                         </div>
 
                         <ul className="space-y-4 mb-8 flex-1 border-b border-black/5 pb-8">
                             {[
-                                "Premium, fully tailored website",
-                                "Advanced enquiry flow & CMS",
-                                "Priority delivery & support",
-                                "1 year management included",
+                                "Everything in Growth Package",
+                                "Advanced booking system integration",
+                                "Custom branding and design",
+                                "Priority support and delivery",
                             ].map((feat, i) => (
-                                <li key={i} className="flex gap-3 items-center text-[#4A5568] text-[14px]">
+                                <li key={i} className="flex gap-3 items-center text-[#4A5568] text-[15px]">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-5 h-5 shrink-0 text-[#3D4935]"><path strokeLinecap="round" strokeLinejoin="round" d="m5 13 4 4L19 7" /></svg>
                                     {feat}
                                 </li>
@@ -212,15 +348,15 @@ export default function Pricing() {
                             whileHover={{ scale: 0.98 }}
                             whileTap={{ scale: 0.95 }}
                             transition={{ type: "spring" as any, stiffness: 400, damping: 15 }}
-                            href="mailto:hello@launchflow.dev"
-                            className="w-full bg-[#f4f4f5] text-[#121212] flex items-center justify-center py-3 rounded-xl font-[500] hover:bg-[#e4e4e7] transition-colors"
+                            href="https://wa.me/919582915196"
+                            className="w-full bg-[#f4f4f5] text-[#121212] py-4 rounded-xl font-[500] hover:bg-[#e4e4e7] transition-colors text-center"
                         >
-                            Email for details
+                            Contact for Details
                         </motion.a>
                     </motion.div>
                 </div>
 
-                {/* Management & Buyout Section */}
+                {/* LaunchFlow Care Plan Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -228,43 +364,50 @@ export default function Pricing() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="mt-16 max-w-4xl mx-auto bg-[#f8f9fa] rounded-[32px] p-10 border border-black/5"
                 >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                    <div className="text-center mb-8">
+                        <h4 className="text-2xl font-bold text-[#121212] mb-4">
+                            LaunchFlow Care Plan (Optional)
+                        </h4>
+                        <div className="flex items-baseline justify-center gap-2 mb-4">
+                            <span className="text-3xl font-bold text-[#121212]">₹5,000</span>
+                            <span className="text-[#4A5568] text-lg">per year</span>
+                            <span className="text-sm text-[#4A5568]/70">after the first year</span>
+                        </div>
+                        <p className="text-[#4A5568] text-[16px] max-w-2xl mx-auto">
+                            We handle all the technical details so you can focus on your business.
+                            You can also choose to manage the website yourself if you prefer.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                            <h4 className="text-xl font-bold text-[#121212] mb-4 flex items-center gap-2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-5 h-5 text-[#3D4935]"><path strokeLinecap="round" strokeLinejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H5.25a2.25 2.25 0 00-2.25 2.25v1.312c0 .346.065.686.188 1.003L4.5 22.5h15l1.312-4.195a2.25 2.25 0 00.188-1.003V18a2.25 2.25 0 00-2.25-2.25h-3.004c-.703 0-1.402.03-2.09.09m-4.5 0c.85.076 1.698.13 2.55.162m-2.55-.162L10 12h4l.45 3.84m.001 0c.852-.032 1.7-.086 2.55-.162m-2.55.162L14 12h-4l-.45-3.84M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                Website Management
-                            </h4>
-                            <ul className="space-y-3 text-[#4A5568] text-[14px]">
-                                <li><strong className="text-[#121212]">First year:</strong> Included with every plan — no extras.</li>
-                                <li><strong className="text-[#121212]">Annual renewal from year 2:</strong>
-                                    <ul className="mt-1.5 ml-4 space-y-1 text-[13px]">
-                                        <li>Starter — ₹3,000 / year</li>
-                                        <li>Growth — ₹5,000 / year</li>
-                                        <li>Authority — ₹8,000–10,000 / year</li>
-                                    </ul>
-                                </li>
-                                <li className="pt-1"><strong className="text-[#121212]">Included in management:</strong> Hosting, domain, uptime monitoring, and minor content updates (text, images, contact info).</li>
-                                <li className="text-[12px] text-[#4A5568]/70">Redesigns, new pages, and new features are quoted separately.</li>
+                            <h5 className="text-lg font-semibold text-[#121212] mb-4">What's Included:</h5>
+                            <ul className="space-y-3">
+                                {[
+                                    "Hosting and security",
+                                    "Domain renewal",
+                                    "Website monitoring",
+                                    "Up to 5 small updates per year",
+                                    "Technical support"
+                                ].map((feat, i) => (
+                                    <li key={i} className="flex gap-3 items-center text-[#4A5568] text-[14px]">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-5 h-5 shrink-0 text-[#3D4935]">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                        </svg>
+                                        {feat}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
+
                         <div>
-                            <h4 className="text-xl font-bold text-[#121212] mb-4 flex items-center gap-2">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-5 h-5 text-[#3D4935]"><path strokeLinecap="round" strokeLinejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
-                                How Ownership Works
-                            </h4>
-                            <ul className="space-y-3 text-[#4A5568] text-[14px]">
-                                <li>All websites are delivered as <strong className="text-[#121212]">fully managed services</strong> by default. Hosting and code remain under LaunchFlow.</li>
-                                <li>This keeps your site fast, secure, and always up — without you lifting a finger.</li>
-                                <li className="pt-1 text-[13px] text-[#4A5568]/80">
-                                    <strong className="text-[#121212]">Optional code buyout</strong> (one-time):
-                                    <ul className="mt-1.5 ml-4 space-y-1">
-                                        <li>Starter — ₹25,000</li>
-                                        <li>Growth — ₹40,000</li>
-                                        <li>Authority — on request</li>
-                                    </ul>
-                                </li>
-                                <li className="text-[12px] text-[#4A5568]/70">After buyout, client manages hosting and changes independently. LaunchFlow management ends.</li>
-                            </ul>
+                            <h5 className="text-lg font-semibold text-[#121212] mb-4">Alternative Option:</h5>
+                            <div className="bg-white rounded-[20px] p-6 border border-[#e2e2e2]">
+                                <h6 className="font-semibold text-[#121212] mb-2">Self-Managed</h6>
+                                <p className="text-[#4A5568] text-sm">
+                                    Prefer to handle hosting and updates yourself? We'll provide full training and documentation to manage your website independently.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </motion.div>

@@ -22,6 +22,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
 }
 
 body {
@@ -154,6 +155,16 @@ body {
 
     .lf-shimmer-card.lf-shimmer-active::before {
         animation: lf-shimmer-sweep 0.8s ease-in-out forwards;
+    }
+
+    /* ── Floating glow pulse on section transitions ───────── */
+    @keyframes lf-glow-pulse {
+        0%, 100% { opacity: 0.04; }
+        50% { opacity: 0.09; }
+    }
+
+    .lf-glow-animate {
+        animation: lf-glow-pulse 6s ease-in-out infinite;
     }
 
 } /* end prefers-reduced-motion */

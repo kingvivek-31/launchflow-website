@@ -6,23 +6,18 @@ import { motion, useInView } from "framer-motion";
 const steps = [
     {
         number: "01",
-        title: "Discovery Call",
-        desc: "We learn about your business, your goals, and the kind of clients you want to attract.",
+        title: "Google Maps Presence",
+        desc: "We optimize your Google Business Profile so you show up when customers search \"gym near me\" or \"wellness center nearby\".",
     },
     {
-        number: "02",
-        title: "Design & Build",
-        desc: "We create a fast, conversion-focused website tailored to your brand. No templates. No shortcuts.",
+        number: "02", 
+        title: "Trust & Reviews",
+        desc: "Your profile showcases customer reviews, professional photos, and complete business information that builds instant credibility.",
     },
     {
         number: "03",
-        title: "You Review & Approve",
-        desc: "We share the site for your feedback, make revisions, and get your sign-off before going live.",
-    },
-    {
-        number: "04",
-        title: "Live & Managed",
-        desc: "Your site goes live. We handle hosting, uptime, and minor updates — all year, every year.",
+        title: "Conversion Website", 
+        desc: "A fast, mobile-optimized website that turns visitors into leads with clear calls-to-action and WhatsApp integration.",
     },
 ];
 
@@ -139,15 +134,15 @@ export default function HowItWorks() {
                             animate={headingInView ? { y: "0%" } : {}}
                             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            From First Call to <br />
-                            <span className="text-[#3D4935]/80">Live &amp; Generating Leads.</span>
+                            The LaunchFlow <br />
+                            <span className="text-[#3D4935]/80">Customer Acquisition System</span>
                         </motion.h2>
                     </div>
                 </div>
 
-                {/* Desktop: 4-column grid */}
+                {/* Desktop: 3-column grid */}
                 <div className="hidden lg:block">
-                    <div className="grid grid-cols-4 gap-5">
+                    <div className="grid grid-cols-3 gap-6">
                         {steps.map((step, i) => (
                             <StepCard key={step.number} step={step} index={i} />
                         ))}

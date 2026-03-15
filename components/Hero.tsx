@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const TICKER_ITEMS = [
-    "GYMS", "WELLNESS CENTERS", "COACHING", "BOXING GYMS", "YOGA STUDIOS", "FITNESS BRANDS"
+    "HEALTHCARE", "FITNESS", "EDUCATION", "CLINICS", "GYMS", "ACADEMIES", "PILATES", "DENTISTS"
 ];
 
 // Triple the items for seamless infinite loop
@@ -38,10 +38,9 @@ const itemVariants = {
 
 // Word-by-word headline animation
 function AnimatedHeadline() {
-    const words = ["Don't", "lose", "clients", "to", "a"];
-    const italicWords = ["bad", "website."];
+    const words = ["Dominate", "Your", "Area."];
+    const italicWords = ["Capture", "Every", "Lead."];
     const allWords = words.length;
-    const lastWordDelay = allWords * 0.07;
 
     return (
         <h1 className="text-5xl sm:text-6xl md:text-[76px] font-[500] leading-[1.05] tracking-tight text-[#121212] mb-6 relative z-20">
@@ -87,30 +86,17 @@ function AnimatedHeadline() {
                     >
                         {word}
                     </motion.span>
-                    {/* Red strikethrough line for "bad website" phrase */}
-                    {(allWords + i >= 5) && (
-                        <motion.span
-                            className="absolute left-0 top-1/2 -translate-y-1/2 h-[2.5px] bg-[#ef4444] rounded-full origin-left"
-                            initial={{ scaleX: 0, opacity: 0 }}
-                            animate={{ scaleX: 1, opacity: 1 }}
-                            transition={{
-                                duration: 0.55,
-                                ease: [0.34, 1.56, 0.64, 1],
-                                delay: (allWords + i) * 0.07 + 0.48,
-                            }}
-                            style={{ width: "100%" }}
-                        />
-                    )}
+
                 </span>
             ))}
             {/* Visually hidden full text for screen readers */}
-            <span className="sr-only">Don&apos;t lose clients to a bad website.</span>
+            <span className="sr-only">Dominate Your Area. Capture Every Lead.</span>
         </h1>
     );
 }
 
 export default function Hero() {
-    const subheadlineWords = ["Don't", "lose", "clients", "to", "a", "bad", "website."];
+    const subheadlineWords = ["Dominate", "Your", "Area.", "Capture", "Every", "Lead."];
     const subheadlineDelay = subheadlineWords.length * 0.07 + 0.2;
 
     return (
@@ -193,7 +179,7 @@ export default function Hero() {
                             variants={itemVariants}
                             className="inline-block bg-[#121212] text-white text-xs font-medium px-4 py-1.5 rounded-full mb-8 relative z-20"
                         >
-                            Managed websites for gyms, wellness &amp; coaching.
+                            Digital infrastructure for premium local businesses.
                         </motion.div>
 
                         {/* Animation 1: Word-by-word headline reveal */}
@@ -210,7 +196,7 @@ export default function Hero() {
                                 delay: subheadlineDelay,
                             }}
                         >
-                            We build and manage fast, lead-generating websites for gyms, wellness centers, and coaching businesses. First year of management included in every plan.
+                            We build high-converting websites, optimize your Google Business ranking, and deploy AI workflows to turn local searches into paying customers 24/7.
                         </motion.p>
 
                         <motion.div
@@ -221,19 +207,19 @@ export default function Hero() {
                                 whileHover={{ scale: 0.98 }}
                                 whileTap={{ scale: 0.95 }}
                                 transition={{ type: "spring" as any, stiffness: 400, damping: 15 }}
-                                href="#pricing"
+                                href="#solution-stack"
                                 className="inline-flex items-center justify-center bg-[#121212] text-white text-base font-medium px-8 py-4 rounded-xl hover:bg-black transition-colors"
                             >
-                                See Plans &amp; Pricing
+                                Upgrade Your Infrastructure
                             </motion.a>
                             <motion.a
                                 whileHover={{ scale: 0.98 }}
                                 whileTap={{ scale: 0.95 }}
                                 transition={{ type: "spring" as any, stiffness: 400, damping: 15 }}
-                                href="#how-it-works"
+                                href="#solution-stack"
                                 className="inline-flex items-center justify-center bg-[#c1fb9e] text-[#121212] text-base font-medium px-8 py-4 rounded-xl hover:bg-[#b5f58c] transition-colors"
                             >
-                                How It Works
+                                View the Stack
                             </motion.a>
                         </motion.div>
                     </motion.div>
@@ -259,10 +245,10 @@ export default function Hero() {
                                 <span className="text-xs font-semibold tracking-wide uppercase">Always Managed</span>
                             </div>
                             <h2 className="text-3xl font-semibold tracking-tight leading-tight mb-2">
-                                More leads. Zero tech headaches.
+                                Your city. Page 1. Day 1.
                             </h2>
                             <p className="text-[#3D4935] text-sm mt-4">
-                                We handle the website. You focus on running your business.
+                                When high-intent customers search, they find you — not your competitor.
                             </p>
                         </motion.div>
                     </motion.div>

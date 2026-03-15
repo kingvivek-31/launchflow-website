@@ -78,10 +78,20 @@ export default function CTA() {
                         animate={headingInView ? { y: "0%" } : {}}
                         transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
                     >
-                        Your future clients are searching right now. <br className="hidden md:block" />
-                        <span className="text-white/60">Is your website ready for them?</span>
+                        Ready to win more customers from <br className="hidden md:block" />
+                        <span className="text-white/60">Google searches?</span>
                     </motion.h2>
                 </div>
+
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                    className="text-white/70 text-lg mb-8 max-w-xl mx-auto"
+                >
+                    Book a short call to see how your business appears on Google compared to your competitors. We'll show you exactly what customers see when they search for businesses like yours.
+                </motion.p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                     <motion.a
@@ -94,7 +104,7 @@ export default function CTA() {
                         href="https://wa.me/918595669560"
                         className="bg-[#c1fb9e] text-[#121212] px-8 py-4 rounded-xl font-medium hover:bg-[#b5f58c] transition-colors inline-block"
                     >
-                        WhatsApp Us Now
+                        Book Free Google Audit
                     </motion.a>
                     <motion.a
                         initial={{ opacity: 0, y: 16 }}
@@ -106,7 +116,7 @@ export default function CTA() {
                         href="mailto:hello@launchflow.co.in"
                         className="bg-white/10 text-white px-8 py-4 rounded-xl font-medium hover:bg-white/20 transition-colors inline-block"
                     >
-                        Send an Email
+                        Quick Consultation
                     </motion.a>
                 </div>
             </motion.div>

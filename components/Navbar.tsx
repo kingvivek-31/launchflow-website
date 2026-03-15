@@ -18,7 +18,7 @@ export default function Navbar() {
         { label: "Home", href: "/" },
         { label: "The Process", href: "/#how-it-works" },
         { label: "Our Work", href: "/our-work" },
-        { label: "Pricing", href: "/#pricing" },
+        { label: "Pricing", href: "/#simple-pricing" },
     ];
 
     return (
@@ -61,7 +61,7 @@ export default function Navbar() {
                                 key={link.label}
                                 href={link.href}
                                 initial={{ opacity: 0, y: -8 }}
-                                animate={mounted ? { opacity: 1, y: 0 } : {}}
+                                animate={mounted ? { opacity: 1, x: 0 } : {}}
                                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: 0.1 + i * 0.07 }}
                                 className="relative text-sm font-medium text-[#4A5568] hover:text-[#121212] transition-colors group py-1"
                             >
@@ -86,7 +86,7 @@ export default function Navbar() {
                             Get in touch
                         </motion.a>
                         <motion.a
-                            href="/#pricing"
+                            href="/#simple-pricing"
                             initial={{ opacity: 0, x: 12 }}
                             animate={mounted ? { opacity: 1, x: 0 } : {}}
                             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: 0.42 }}
