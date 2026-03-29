@@ -4,14 +4,13 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const TICKER_ITEMS = [
-    "HEALTHCARE", "FITNESS", "EDUCATION", "CLINICS", "GYMS", "ACADEMIES", "PILATES", "DENTISTS"
+    "ROHINI", "DWARKA", "JANAKPURI", "PITAMPURA", "RAJOURI GARDEN", "PATEL NAGAR", "LAXMI NAGAR", "GREATER KAILASH", "SAKET", "NOIDA", "GURGAON", "FARIDABAD"
 ];
 
-// Triple the items for seamless infinite loop
 const TICKER_ROW = [...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS];
 
 const springTransition = {
-    type: "spring" as any,
+    type: "spring" as const,
     damping: 25,
     stiffness: 120,
 };
@@ -36,19 +35,17 @@ const itemVariants = {
     }
 };
 
-// Word-by-word headline animation
 function AnimatedHeadline() {
-    const words = ["Dominate", "Your", "Area."];
-    const italicWords = ["Capture", "Every", "Lead."];
-    const allWords = words.length;
+    const line1 = ["Get", "15+", "new", "members"];
+    const line2Words = ["every"];
+    const italicWords = ["single month."];
 
     return (
-        <h1 className="text-5xl sm:text-6xl md:text-[76px] font-[500] leading-[1.05] tracking-tight text-[#121212] mb-6 relative z-20">
-            {/* Regular words */}
-            {words.map((word, i) => (
+        <h1 className="text-5xl sm:text-6xl md:text-[72px] font-[700] leading-[1.05] tracking-tight text-[#121212] mb-6 relative z-20">
+            {line1.map((word, i) => (
                 <span
                     key={i}
-                    className="inline-block overflow-hidden mr-[0.22em]"
+                    className="inline-block overflow-hidden mr-[0.2em]"
                     aria-hidden="true"
                 >
                     <motion.span
@@ -65,13 +62,31 @@ function AnimatedHeadline() {
                     </motion.span>
                 </span>
             ))}
-            {/* Line break on md+ */}
-            <br className="hidden md:block" />
-            {/* Italic accent words */}
+            <br />
+            {line2Words.map((word, i) => (
+                <span
+                    key={`l2-${i}`}
+                    className="inline-block overflow-hidden mr-[0.2em]"
+                    aria-hidden="true"
+                >
+                    <motion.span
+                        className="inline-block"
+                        initial={{ y: "110%", opacity: 0 }}
+                        animate={{ y: "0%", opacity: 1 }}
+                        transition={{
+                            duration: 0.65,
+                            ease: [0.16, 1, 0.3, 1],
+                            delay: (line1.length + i) * 0.07,
+                        }}
+                    >
+                        {word}
+                    </motion.span>
+                </span>
+            ))}
             {italicWords.map((word, i) => (
                 <span
                     key={`italic-${i}`}
-                    className="inline-block overflow-hidden mr-[0.22em] pr-2 pb-2 -mr-2 -mb-2 relative"
+                    className="inline-block overflow-hidden mr-[0.2em] relative"
                     aria-hidden="true"
                 >
                     <motion.span
@@ -81,23 +96,21 @@ function AnimatedHeadline() {
                         transition={{
                             duration: 0.65,
                             ease: [0.16, 1, 0.3, 1],
-                            delay: (allWords + i) * 0.07,
+                            delay: (line1.length + line2Words.length + i) * 0.07,
                         }}
                     >
                         {word}
                     </motion.span>
-
                 </span>
             ))}
-            {/* Visually hidden full text for screen readers */}
-            <span className="sr-only">Dominate Your Area. Capture Every Lead.</span>
+            <span className="sr-only">Get 15+ new members every single month.</span>
         </h1>
     );
 }
 
 export default function Hero() {
-    const subheadlineWords = ["Dominate", "Your", "Area.", "Capture", "Every", "Lead."];
-    const subheadlineDelay = subheadlineWords.length * 0.07 + 0.2;
+    const totalWords = 4 + 1 + 1; // line1 + line2 + italic
+    const subheadlineDelay = totalWords * 0.07 + 0.2;
 
     return (
         <section id="hero" className="relative min-h-[90vh] flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden">
@@ -105,64 +118,26 @@ export default function Hero() {
             {/* Soft gradient background */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#f2fcf1] to-[#ffffff] pointer-events-none" />
 
-            {/* ── Background Animated Objects ─────────────────── */}
-
-            {/* 1. Tall green pill — drifts up/down + slight sway */}
+            {/* Background animated objects */}
             <motion.div
                 animate={{ y: [0, -44, 0], x: [0, 14, 0], rotate: [0, 8, 0] }}
                 transition={{ duration: 9, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
                 className="absolute top-[12%] left-[6%] w-16 h-64 bg-gradient-to-b from-[#c1fb9e]/70 to-[#c1fb9e]/10 rounded-full hidden xl:block blur-[3px] pointer-events-none will-change-transform"
             />
-
-            {/* 2. Large soft yellow ring — slow counter-rotation + float */}
             <motion.div
                 animate={{ rotate: [0, -360], y: [0, 30, 0] }}
                 transition={{ rotate: { duration: 28, ease: "linear", repeat: Infinity }, y: { duration: 8, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" } }}
                 className="absolute bottom-[8%] right-[5%] w-[300px] h-[300px] border-[20px] border-[#fadc64]/35 rounded-full hidden xl:block blur-[1px] pointer-events-none will-change-transform"
             />
-
-            {/* 3. Small dashed lavender circle — spins fast, top-center */}
             <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 14, ease: "linear", repeat: Infinity }}
                 className="absolute top-[18%] left-[42%] w-40 h-40 border-[2.5px] border-dashed border-[#d4cdf8]/70 rounded-full hidden lg:block pointer-events-none will-change-transform"
             />
-
-            {/* 4. Medium green blurred square — rotates + breathes, top-right */}
             <motion.div
                 animate={{ rotate: [12, 52, 12], scale: [1, 1.08, 1], opacity: [0.35, 0.55, 0.35] }}
                 transition={{ duration: 11, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
                 className="absolute top-[8%] right-[10%] w-28 h-28 bg-[#c1fb9e]/40 rounded-[28px] hidden lg:block blur-[6px] pointer-events-none will-change-transform"
-            />
-
-            {/* 5. Tiny lavender dot cluster — orbits in a slow ellipse, mid-left */}
-            <motion.div
-                animate={{ x: [0, 30, 0, -30, 0], y: [0, -20, 0, 20, 0] }}
-                transition={{ duration: 12, ease: "easeInOut", repeat: Infinity }}
-                className="absolute top-[50%] left-[2%] flex gap-2 pointer-events-none hidden xl:block will-change-transform"
-            >
-                {[0, 1, 2].map((i) => (
-                    <motion.span
-                        key={i}
-                        animate={{ opacity: [0.4, 1, 0.4] }}
-                        transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.6 }}
-                        className="block w-2 h-2 rounded-full bg-[#d4cdf8]"
-                    />
-                ))}
-            </motion.div>
-
-            {/* 6. Small dark filled circle — bounces softly, bottom-left */}
-            <motion.div
-                animate={{ y: [0, -22, 0], x: [0, 10, 0] }}
-                transition={{ duration: 5.5, ease: "easeInOut", repeat: Infinity, repeatType: "mirror", delay: 1 }}
-                className="absolute bottom-[20%] left-[14%] w-5 h-5 bg-[#121212]/10 rounded-full hidden lg:block pointer-events-none will-change-transform"
-            />
-
-            {/* 7. Thin long horizontal stroke — drifts left/right, below center */}
-            <motion.div
-                animate={{ x: [0, 40, 0], opacity: [0.15, 0.35, 0.15] }}
-                transition={{ duration: 13, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
-                className="absolute bottom-[35%] right-[12%] w-48 h-[2px] bg-gradient-to-r from-transparent via-[#a8e68e]/60 to-transparent rounded-full hidden lg:block pointer-events-none will-change-transform"
             />
 
             <div className="relative z-10 w-full max-w-5xl mx-auto px-6 sm:px-8 pb-12">
@@ -179,13 +154,11 @@ export default function Hero() {
                             variants={itemVariants}
                             className="inline-block bg-[#121212] text-white text-xs font-medium px-4 py-1.5 rounded-full mb-8 relative z-20"
                         >
-                            Digital infrastructure for premium local businesses.
+                            For gyms & fitness studios in Delhi NCR
                         </motion.div>
 
-                        {/* Animation 1: Word-by-word headline reveal */}
                         <AnimatedHeadline />
 
-                        {/* Subheadline fades in 200ms after last word */}
                         <motion.p
                             className="text-lg md:text-xl text-[#4A5568] max-w-xl mb-10 relative z-20 leading-relaxed"
                             initial={{ opacity: 0 }}
@@ -196,7 +169,7 @@ export default function Hero() {
                                 delay: subheadlineDelay,
                             }}
                         >
-                            We build high-converting websites, optimize your Google Business ranking, and deploy AI workflows to turn local searches into paying customers 24/7.
+                            We put your gym on page 1 of Google so that when someone in your area searches "gym near me" — they find <em>you</em>, walk in, and join. No paid ads. No cold calls. Just consistent enquiries.
                         </motion.p>
 
                         <motion.div
@@ -206,63 +179,95 @@ export default function Hero() {
                             <motion.a
                                 whileHover={{ scale: 0.98 }}
                                 whileTap={{ scale: 0.95 }}
-                                transition={{ type: "spring" as any, stiffness: 400, damping: 15 }}
-                                href="#solution-stack"
-                                className="inline-flex items-center justify-center bg-[#121212] text-white text-base font-medium px-8 py-4 rounded-xl hover:bg-black transition-colors"
+                                transition={{ type: "spring" as const, stiffness: 400, damping: 15 }}
+                                href="https://wa.me/918595669560?text=Hi%20LaunchFlow%2C%20I%20want%20to%20get%20more%20members%20for%20my%20gym"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white text-base font-semibold px-8 py-4 rounded-xl hover:bg-[#20BE5A] transition-colors shadow-[0_4px_20px_rgba(37,211,102,0.3)]"
                             >
-                                Upgrade Your Infrastructure
+                                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                                    <path d="M11.99 0C5.373 0 0 5.373 0 11.99c0 2.112.554 4.094 1.524 5.813L0 23.952l6.334-1.493A11.93 11.93 0 0011.99 24C18.607 24 24 18.627 24 11.99 24 5.373 18.627 0 11.99 0zm0 21.937a9.928 9.928 0 01-5.07-1.378l-.364-.216-3.762.887.9-3.663-.237-.376A9.928 9.928 0 012.063 11.99C2.063 6.513 6.513 2.063 11.99 2.063c5.477 0 9.927 4.45 9.927 9.927 0 5.477-4.45 9.947-9.927 9.947z"/>
+                                </svg>
+                                WhatsApp Us — Free Audit
                             </motion.a>
                             <motion.a
                                 whileHover={{ scale: 0.98 }}
                                 whileTap={{ scale: 0.95 }}
-                                transition={{ type: "spring" as any, stiffness: 400, damping: 15 }}
-                                href="#solution-stack"
-                                className="inline-flex items-center justify-center bg-[#c1fb9e] text-[#121212] text-base font-medium px-8 py-4 rounded-xl hover:bg-[#b5f58c] transition-colors"
+                                transition={{ type: "spring" as const, stiffness: 400, damping: 15 }}
+                                href="#pricing"
+                                className="inline-flex items-center justify-center bg-[#121212] text-white text-base font-medium px-8 py-4 rounded-xl hover:bg-black transition-colors"
                             >
-                                View the Stack
+                                See Plans & Pricing
                             </motion.a>
                         </motion.div>
+
+                        <motion.p
+                            className="mt-5 text-sm text-[#4A5568] relative z-20"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: subheadlineDelay + 0.4 }}
+                        >
+                            🤝 15+ enquiries/month guaranteed — or we work free until you get them
+                        </motion.p>
                     </motion.div>
 
-                    {/* Right / Information Card */}
+                    {/* Right / Stat Card */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9, x: 50 }}
                         animate={{ opacity: 1, scale: 1, x: 0 }}
                         transition={{ delay: 0.4, duration: 1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                        className="w-full md:w-[420px] shrink-0 relative z-20"
+                        className="w-full md:w-[380px] shrink-0 relative z-20"
                     >
                         <motion.div
                             whileHover={{ y: -8 }}
-                            transition={{ type: "spring" as any, stiffness: 300, damping: 20 }}
-                            className="bg-[#c1fb9e] rounded-[32px] p-8 pb-12 shadow-sm border border-[#a8e68e]/50 text-[#121212] cursor-default group"
+                            transition={{ type: "spring" as const, stiffness: 300, damping: 20 }}
+                            className="bg-[#121212] rounded-[32px] p-8 pb-10 shadow-2xl text-white cursor-default group"
                         >
-                            <div className="flex items-center justify-between mb-16">
-                                <div
-                                    className="w-10 h-10 rounded-full bg-[#121212] flex items-center justify-center text-white origin-center transition-transform duration-500 group-hover:rotate-180"
-                                >
-                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 2L2 7l10 5 10-5-10-5z" /></svg>
+                            <div className="flex items-center justify-between mb-12">
+                                <div className="w-10 h-10 rounded-full bg-[#c1fb9e] flex items-center justify-center text-[#121212] origin-center transition-transform duration-500 group-hover:rotate-180">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                    </svg>
                                 </div>
-                                <span className="text-xs font-semibold tracking-wide uppercase">Always Managed</span>
+                                <span className="text-xs font-semibold tracking-wide uppercase text-white/40">Live Results</span>
                             </div>
-                            <h2 className="text-3xl font-semibold tracking-tight leading-tight mb-2">
-                                Your city. Page 1. Day 1.
-                            </h2>
-                            <p className="text-[#3D4935] text-sm mt-4">
-                                When high-intent customers search, they find you — not your competitor.
-                            </p>
+
+                            <div className="space-y-6">
+                                <div>
+                                    <p className="text-white/50 text-xs uppercase tracking-wider mb-1">New enquiries this month</p>
+                                    <p className="text-[#c1fb9e] text-4xl font-bold">23</p>
+                                </div>
+                                <div className="h-px bg-white/10" />
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <p className="text-white/40 text-xs mb-1">Avg. cost per lead</p>
+                                        <p className="text-white font-semibold text-lg">₹0</p>
+                                        <p className="text-white/30 text-xs">No paid ads</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-white/40 text-xs mb-1">Google rank</p>
+                                        <p className="text-white font-semibold text-lg">#1–3</p>
+                                        <p className="text-white/30 text-xs">Local Maps pack</p>
+                                    </div>
+                                </div>
+                                <div className="h-px bg-white/10" />
+                                <p className="text-white/50 text-xs leading-relaxed">
+                                    📍 Serving gyms across Rohini, Dwarka, Pitampura, Patel Nagar & more
+                                </p>
+                            </div>
                         </motion.div>
                     </motion.div>
                 </div>
             </div>
 
-            {/* Animation 2: Dual-Row Opposing Marquee Ticker */}
+            {/* Ticker — Delhi NCR areas */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8, duration: 1 }}
                 className="lf-ticker w-full bg-white border-y border-black/5 py-4 overflow-hidden mt-auto relative z-30"
             >
-                {/* Row 1: scrolls left */}
                 <div className="lf-ticker-row-1 flex gap-10 text-[#4A5568] text-sm font-medium tracking-wide uppercase mb-3 w-max">
                     {TICKER_ROW.map((item, i) => (
                         <span key={i} className="flex-shrink-0">
@@ -271,7 +276,6 @@ export default function Hero() {
                         </span>
                     ))}
                 </div>
-                {/* Row 2: scrolls right */}
                 <div className="lf-ticker-row-2 flex gap-10 text-[#4A5568] text-sm font-medium tracking-wide uppercase w-max">
                     {TICKER_ROW.map((item, i) => (
                         <span key={i} className="flex-shrink-0">
